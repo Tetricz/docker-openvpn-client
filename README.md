@@ -13,7 +13,7 @@ services:
     openvpn:
         restart: unless-stopped
         container_name: openvpn
-        image: tetricz/
+        image: tetricz/openvpn-client
         volumes:
          - </your/directory>:/openvpn
         environment:
@@ -25,5 +25,5 @@ services:
 ```
 ### Docker Run
 ```
-docker run -dit --cap-add=NET_ADMIN -e VPN_PASS="password" -e VPN_USER="username" -v </your/directory>:/openvpn --name openvpn tetricz/openvpn
+docker run -dit --cap-add=NET_ADMIN -e VPN_PASS="password" -e VPN_USER="username" -v </your/directory>:/openvpn --name openvpn tetricz/openvpn-client
 ```
