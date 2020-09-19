@@ -1,8 +1,8 @@
 #!/bin/bash
-iptables --flush
-iptables --delete-chain
-iptables -t nat --flush
-iptables -t nat --delete-chain
+#iptables --flush
+#iptables --delete-chain
+#iptables -t nat --flush
+#iptables -t nat --delete-chain
 iptables -P INPUT DROP
 iptables -P FORWARD DROP
 iptables -P OUTPUT DROP
