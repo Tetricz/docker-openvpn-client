@@ -6,7 +6,9 @@ ENV PORT="1194" \
     LAN_NETWORK="192.168.1.0/24" \
     VPN_USER="" \
     VPN_PASS="" \
-    PROTO="udp"
+    PROTO="udp" \
+    docker_GATEWAY="172.17.0.1" \
+    docker_SUBNET="172.17.0.0/16"
 
 RUN apk --no-cache add bash curl iptables openvpn openresolv openrc jq
 
