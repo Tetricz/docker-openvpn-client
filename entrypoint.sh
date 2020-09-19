@@ -1,6 +1,4 @@
 #!/bin/bash
-rm -f ${ovpnDIR}/cred.conf
-
 #iptables setup
 /home/ip-tables.sh
 
@@ -10,6 +8,8 @@ rm -f ${ovpnDIR}/cred.conf
 #set variables
 export ovpnDIR="/openvpn"
 export ovpnFILE="${ovpnDIR}/$(ls ${ovpnDIR} | shuf -n 1)"
+
+rm -f ${ovpnDIR}/cred.conf
 
 echo "################################################"
 
