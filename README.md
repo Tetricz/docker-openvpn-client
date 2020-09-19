@@ -1,11 +1,7 @@
 # OpenVPN client
 
 ## Quick Start
-volume mapping
-```
-/your/directory:/config/   (channels.txt list and scripts are found here)
-/your/directory:/opt/ytdl/ (the folders for the youtube channels)
-```
+
 ### Docker Compose
 ```
 version: '3'
