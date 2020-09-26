@@ -5,11 +5,12 @@
 #setup /dev/net/tun
 /home/tun.sh
 
+#remove credentials
+rm -f ${ovpnDIR}/cred.conf
+
 #set variables
 export ovpnDIR="/openvpn"
 export ovpnFILE="${ovpnDIR}/$(ls ${ovpnDIR} | shuf -n 1)"
-
-rm -f ${ovpnDIR}/cred.conf
 
 echo "################################################"
 
@@ -37,6 +38,8 @@ if [[ -f "${ovpnFILE}" ]];
         echo "No OpenVPN config files."
         exit
 fi
+
+#write credentials
 echo "${VPN_USER}" >> ${ovpnDIR}/cred.conf
 echo "${VPN_PASS}" >> ${ovpnDIR}/cred.conf
 
