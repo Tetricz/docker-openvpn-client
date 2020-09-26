@@ -6,6 +6,13 @@ iptables -t nat --delete-chain
 iptables -P INPUT DROP
 iptables -P FORWARD DROP
 iptables -P OUTPUT DROP
+ip6tables --flush
+ip6tables --delete-chain
+ip6tables -t nat --flush
+ip6tables -t nat --delete-chain
+ip6tables -P INPUT DROP
+ip6tables -P FORWARD DROP
+ip6tables -P OUTPUT DROP
 
 iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 iptables -A OUTPUT -o lo -j ACCEPT
