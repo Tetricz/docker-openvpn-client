@@ -1,4 +1,4 @@
-FROM alpine:3.12
+FROM alpine:3.13
 
 LABEL maintainer="github.com/Tetricz"
 
@@ -10,7 +10,7 @@ ENV PORT="1194" \
     docker_GATEWAY="172.17.0.1" \
     docker_SUBNET="172.17.0.0/16"
 
-RUN apk --no-cache add bash curl iptables ip6tables openvpn openresolv openrc jq
+RUN apk --no-cache add bash curl iptables ip6tables openresolv openrc jq openvpn
 
 ADD ./update-resolv-conf /etc/openvpn/
 ADD ./tun.sh /home/
