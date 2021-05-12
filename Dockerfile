@@ -1,6 +1,6 @@
-FROM alpine:3.13
-
-LABEL maintainer="github.com/Tetricz"
+# Maintainer https://github.com/Tetricz
+ARG ALPINE_VERSION=latest
+FROM alpine:${ALPINE_VERSION}
 
 ENV PORT="1194" \
     LAN_NETWORK="192.168.1.0/24" \
@@ -10,15 +10,13 @@ ENV PORT="1194" \
     docker_GATEWAY="172.17.0.1" \
     docker_SUBNET="172.17.0.0/16"
 
-RUN apk --no-cache add bash curl iptables ip6tables openresolv openrc jq openvpn
-
 ADD ./update-resolv-conf /etc/openvpn/
 ADD ./tun.sh /home/
 ADD ./ip-tables.sh /home/
 ADD ./entrypoint.sh /
-
-RUN chmod +x ./entrypoint.sh /home/* /etc/openvpn/*
-RUN mkdir -p /openvpn
+RUN apk --no-cache add bash curl iptables ip6tables openresolv openrc jq openvpn \
+ && chmod +x ./entrypoint.sh /home/* /etc/openvpn/* \
+ && mkdir -p /openvpn
 
 HEALTHCHECK --interval=60s --timeout=15s --start-period=120s \
              CMD curl -LSs 'https://api.ipify.org'
